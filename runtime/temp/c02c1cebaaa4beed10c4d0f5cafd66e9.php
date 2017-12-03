@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512299430;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512312163;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<a href="/brand_add">添加</a>
+<a href="/brand_add">添加品牌</a>
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
