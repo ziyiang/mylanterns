@@ -32,7 +32,7 @@
 </head>
 
 <body>
-<a href="/special_add">添加</a>
+<a href="/lantern_add">添加</a>
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -73,8 +73,8 @@
                         <th class="text-center">数量</th>
                         <th class="text-center">操作</th>
                     </tr>
+                    {volist name='list' id='vo'}
                     <tr>
-                        {volist name='list' id='vo'}
                         <td> {$vo.lantern_id}</td>
                         <td> {$vo.brand_id}</td>
                         <td> {$vo.special_id}</td>
@@ -83,11 +83,11 @@
                         <td> {$vo.box_status}</td>
                         <td> {$vo.num}</td>
                         <td>
-                            <a class="btn btn-primary"  href="/special_load?special_id={$vo.special_id}">修改</a>
+                            <a class="btn btn-primary"  href="/lantern_load?lantern_id={$vo.lantern_id}">修改</a>
                             <a class="btn btn-danger" href="#">删除</a>
                         </td>
-                        {/volist}
                     </tr>
+                    {/volist}
                 </table>
                 {$page}
             </div>

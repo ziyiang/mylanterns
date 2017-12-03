@@ -33,10 +33,14 @@ class Lanterns extends Controller
      */
     public function lantern_add(){
 
-        $brandModel = new Brand;
+        $brandModel = new Brand();
         $brandList=$brandModel->select();
-
         $this->assign('brandList', $brandList);
+
+        $specialModel = new Special();
+        $specialList=$specialModel->select();
+        $this->assign('specialList', $specialList);
+
         return $this->fetch('lantern/lantern_add.html');
     }
 
@@ -47,10 +51,26 @@ class Lanterns extends Controller
      * @date:2017年12月2日
      */
     public function lantern_save(){
-        $grand_id=$this->request->param("brand_id");
-        $lantern_name=$this->request->param("lantern_name");
 
-        $bool=Db::table('lantern')->insert(array("brand_id"=>$grand_id,"lantern_name"=>$lantern_name,"create_time"=>date("Y-m-d H:i:s")));
+
+        $brand_id=$this->request->param("brand_id");
+        $special_id=$this->request->param("special_id");
+        $year=$this->request->param("year");
+        $lamp_status=$this->request->param("lamp_status");
+        $box_status=$this->request->param("box_status");
+        $num=$this->request->param("num");
+
+        $bool=Db::table('lantern')->insert(
+            array(
+                "brand_id"=>$brand_id,
+                "special_id"=>$special_id,
+                "year"=>$year,
+                "lamp_status"=>$lamp_status,
+                "box_status"=>$box_status,
+                "num"=>$num,
+                "create_time"=>date("Y-m-d H:i:s"),
+                )
+        );
         if($bool){
             echo json_encode(array("type"=>true));
         }else{
