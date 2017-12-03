@@ -47,3 +47,17 @@ Route::post([
     'special_save' => 'specials/special_save',
     'special_update' => 'specials/special_update',
 ]);
+
+
+
+
+
+Route::get([
+    'lantern_list' => 'lanterns/lantern_list',
+    'lantern_add' => 'lanterns/lantern_add',
+    'lantern_load' => 'lanterns/lantern_load',
+]);
+Route::post([
+    'lantern_save' => 'lanterns/lantern_save',
+    'lantern_update' => 'lanterns/lantern_update',
+]);

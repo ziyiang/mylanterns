@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>型号管理添加</title>
+</head>
+<body>
+
+<!--下拉框-->
+<select id="brand_id">
+    {volist name='brandList' id='vo'}
+    <option  value ="{$vo.brand_id}">{$vo.brand_name}</option>
+    {/volist}
+</select>
+
+    <input id="special_name" name="special_name" value="text">
+    <button id="save" type="button">Change Content</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $("#save").click(function(){
+            $.ajax({
+                url:"/special_save",
+                type:"post",
+                data:{"brand_id":$("#brand_id").val(),"special_name":$("#special_name").val()},
+                dataType:"json",
+                success:function(html){
+                    console.log(html);
+                }
+            });
+        });
+    });
+</script>
+</html>

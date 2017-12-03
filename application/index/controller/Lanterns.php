@@ -1,20 +1,23 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use app\index\model\Lantern;
+
+
 class Lanterns extends Controller
 {
-    public function special_list()
+    public function lantern_list()
     {
 
-        $specialModel = new Special;
-        $list = $specialModel->paginate(2,false,[
+        $lanternModel = new Lantern;
+        $list = $lanternModel->paginate(2,false,[
             'var_page'  => 'page\Page',
             'list_rows' => 2,
         ]);
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('page', $page);
-        return $this->fetch('special/special_index.html');
+        return $this->fetch('lantern/lantern_index.html');
 
     }
 
@@ -24,13 +27,13 @@ class Lanterns extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_add(){
+    public function lantern_add(){
 
-        $brandModel = new Brand;
-        $brandList=$brandModel->select();
+        $lanternModel = new Lantern;
+        $lanternList=$lanternModel->select();
 
-        $this->assign('brandList', $brandList);
-        return $this->fetch('special/special_add.html');
+        $this->assign('lanternList', $lanternList);
+        return $this->fetch('lantern/lantern_add.html');
     }
 
 
@@ -39,11 +42,11 @@ class Lanterns extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_save(){
-        $grand_id=$this->request->param("brand_id");
-        $special_name=$this->request->param("special_name");
+    public function lantern_save(){
+        $lantern_id=$this->request->param("lantern_id");
+        $lantern_name=$this->request->param("lantern_name");
 
-        $bool=Db::table('special')->insert(array("brand_id"=>$grand_id,"special_name"=>$special_name,"create_time"=>date("Y-m-d H:i:s")));
+        $bool=Db::table('lantern')->insert(array("lantern_id"=>$lantern_id,"lantern_name"=>$lantern_name,"create_time"=>date("Y-m-d H:i:s")));
         if($bool){
             echo json_encode(array("type"=>true));
         }else{
@@ -57,19 +60,19 @@ class Lanterns extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_load(){
-        $special_id=$_REQUEST["special_id"];
-        $special_data=Db::table('special')->where(array("special_id"=>$special_id))->find();
+    public function lantern_load(){
+        $lantern_id=$_REQUEST["lantern_id"];
+        $lantern_data=Db::table('lantern')->where(array("lantern_id"=>$lantern_id))->find();
 
-        $brandModel = new Brand;
-        $brandList=$brandModel->select();
+        $lanternModel = new Brand;
+        $lanternList=$lanternModel->select();
 
-        $this->assign('brandList', $brandList);
+        $this->assign('lanternList', $lanternList);
 
 
-        $this->assign('special_data', $special_data);
+        $this->assign('lantern_data', $lantern_data);
 
-        return $this->fetch('special/special_load.html');
+        return $this->fetch('lantern/lantern_load.html');
 
     }
 
@@ -79,11 +82,11 @@ class Lanterns extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_update(){
-        $special_id=$_REQUEST["special_id"];
-        $special_name=$_REQUEST["special_name"];
+    public function lantern_update(){
+        $lantern_id=$_REQUEST["lantern_id"];
+        $lantern_name=$_REQUEST["lantern_name"];
         $brand_id=$_REQUEST["brand_id"];
-        $bool=Db::table('special')->where(array("special_id"=>$special_id))->update(array("brand_id"=>$brand_id,"special_name"=>$special_name));
+        $bool=Db::table('lantern')->where(array("lantern_id"=>$lantern_id))->update(array("brand_id"=>$brand_id,"lantern_name"=>$lantern_name));
         if($bool){
             echo json_encode(array("type"=>true));
         }else{
