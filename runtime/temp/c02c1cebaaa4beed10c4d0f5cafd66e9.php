@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512278304;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512299430;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,16 +69,16 @@
                         <th class="text-center">名称</th>
                         <th class="text-center">操作</th>
                     </tr>
+                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$brand): $mod = ($i % 2 );++$i;?>
                     <tr>
-                        <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$brand): $mod = ($i % 2 );++$i;?>
                         <td> <?php echo $brand['brand_id']; ?></td>
                         <td> <?php echo $brand['brand_name']; ?></td>
                         <td>
                             <a class="btn btn-primary"  href="/brand_load?brand_id=<?php echo $brand['brand_id']; ?>">修改</a>
                             <a class="btn btn-danger" href="#">删除</a>
                         </td>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
                     </tr>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
                 </table>
                 <?php echo $page; ?>
             </div>
