@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:24:"special/special_add.html";i:1512291207;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,9 @@
 
 <!--下拉框-->
 <select id="brand_id">
-    {volist name='brandList' id='vo'}
-    <option  value ="{$vo.brand_id}">{$vo.brand_name}</option>
-    {/volist}
+    <?php if(is_array($brandList) || $brandList instanceof \think\Collection || $brandList instanceof \think\Paginator): $i = 0; $__LIST__ = $brandList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <option  value ="<?php echo $vo['brand_id']; ?>"><?php echo $vo['brand_name']; ?></option>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
 </select>
 
     <input id="special_name" name="special_name" value="text">
