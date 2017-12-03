@@ -68,16 +68,16 @@
                         <th class="text-center">名称</th>
                         <th class="text-center">操作</th>
                     </tr>
+                    {volist name='list' id='brand'}
                     <tr>
-                        {volist name='list' id='brand'}
                         <td> {$brand.brand_id}</td>
                         <td> {$brand.brand_name}</td>
                         <td>
                             <a class="btn btn-primary"  href="/brand_load?brand_id={$brand.brand_id}">修改</a>
                             <a class="btn btn-danger" href="#">删除</a>
                         </td>
-                        {/volist}
                     </tr>
+                    {/volist}
                 </table>
                 {$page}
             </div>

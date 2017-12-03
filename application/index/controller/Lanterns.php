@@ -1,13 +1,7 @@
 <?php
-
 namespace app\index\controller;
-
 use think\Controller;
-use think\Db;
-use app\index\model\Special;
-use app\index\model\Brand;
-
-class Specials extends Controller
+class Lanterns extends Controller
 {
     public function special_list()
     {
@@ -97,5 +91,4 @@ class Specials extends Controller
         }
 
     }
-
 }
