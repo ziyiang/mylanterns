@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\index\model\Lantern;
 use think\Controller;
 use think\Db;
 use app\index\model\Special;
@@ -13,8 +14,8 @@ class Specials extends Controller
     {
 
         $specialModel = new Special;
-        $list = $specialModel->paginate(2,false,[
-            'var_page'  => 'page\Page',
+        $list = $specialModel->paginate(2, false, [
+            'var_page' => 'page\Page',
             'list_rows' => 2,
         ]);
         $page = $list->render();
@@ -30,10 +31,11 @@ class Specials extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_add(){
+    public function special_add()
+    {
 
         $brandModel = new Brand;
-        $brandList=$brandModel->select();
+        $brandList = $brandModel->select();
 
         $this->assign('brandList', $brandList);
         return $this->fetch('special/special_add.html');
@@ -45,15 +47,16 @@ class Specials extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_save(){
-        $grand_id=$this->request->param("brand_id");
-        $special_name=$this->request->param("special_name");
+    public function special_save()
+    {
+        $grand_id = $this->request->param("brand_id");
+        $special_name = $this->request->param("special_name");
 
-        $bool=Db::table('special')->insert(array("brand_id"=>$grand_id,"special_name"=>$special_name,"create_time"=>date("Y-m-d H:i:s")));
-        if($bool){
-            echo json_encode(array("type"=>true));
-        }else{
-            echo json_encode(array("type"=>false));
+        $bool = Db::table('special')->insert(array("brand_id" => $grand_id, "special_name" => $special_name, "create_time" => date("Y-m-d H:i:s")));
+        if ($bool) {
+            echo json_encode(array("type" => true));
+        } else {
+            echo json_encode(array("type" => false));
         }
 
     }
@@ -63,19 +66,17 @@ class Specials extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_load(){
-        $special_id=$_REQUEST["special_id"];
-        $special_data=Db::table('special')->where(array("special_id"=>$special_id))->find();
+    public function special_load()
+    {
+        $lantern_id = $_REQUEST["lantern_id"];
+        $lantern_data = Db::table('special')->where(array("lantern_id" => $lantern_id))->find();
+
 
         $brandModel = new Brand;
-        $brandList=$brandModel->select();
+        $brandList = $brandModel->select();
 
         $this->assign('brandList', $brandList);
-
-
-        $this->assign('special_data', $special_data);
-
-        return $this->fetch('special/special_load.html');
+        return $this->fetch('special/lantern_load.html');
 
     }
 
@@ -85,15 +86,16 @@ class Specials extends Controller
      * @author:lizx
      * @date:2017年12月2日
      */
-    public function special_update(){
-        $special_id=$_REQUEST["special_id"];
-        $special_name=$_REQUEST["special_name"];
-        $brand_id=$_REQUEST["brand_id"];
-        $bool=Db::table('special')->where(array("special_id"=>$special_id))->update(array("brand_id"=>$brand_id,"special_name"=>$special_name));
-        if($bool){
-            echo json_encode(array("type"=>true));
-        }else{
-            echo json_encode(array("type"=>false));
+    public function special_update()
+    {
+        $special_id = $_REQUEST["special_id"];
+        $special_name = $_REQUEST["special_name"];
+        $brand_id = $_REQUEST["brand_id"];
+        $bool = Db::table('special')->where(array("special_id" => $special_id))->update(array("brand_id" => $brand_id, "special_name" => $special_name));
+        if ($bool) {
+            echo json_encode(array("type" => true));
+        } else {
+            echo json_encode(array("type" => false));
         }
 
     }
