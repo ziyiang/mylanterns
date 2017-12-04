@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:20:"brand/brand_add.html";i:1512399265;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:20:"brand/brand_add.html";i:1512401383;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,17 +29,40 @@
         <![endif]-->
     </head>
     <body>
+
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="brand_list">品牌维护</a></li>
+                        <li><a href="special_list">型号维护</a></li>
+                        <li><a href="#number">数量维护</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div style="height: 20px;"></div>
-                    <div class="form-inline">
+                    <div class="">
                         <div class="form-group">
                             <label for="brand_name">品牌名称：</label>
                             <input class="form-control" id="brand_name" name="brand_name">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success" id="save" type="button">Change Content</button>
+                            <button class="btn btn-success" id="save" type="button">添加品牌</button>
                         </div>
                     </div>
                 </div>
