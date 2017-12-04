@@ -23,6 +23,14 @@
 
 use think\Route;
 
+
+
+Route::post([
+    'to_login' => 'users/to_login',
+]);
+
+
+
 Route::get([
     'brand_list' => 'brands/brand_list',
     'brand_add' => 'brands/brand_add',
