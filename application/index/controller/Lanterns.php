@@ -59,8 +59,6 @@ class Lanterns extends Controller
      */
     public function lantern_save()
     {
-
-
         $lantern_id = $this->request->param("lantern_id");
         $brand_id = $this->request->param("brand_id");
         $special_id = $this->request->param("special_id");
