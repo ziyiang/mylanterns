@@ -68,4 +68,7 @@ Route::get([
 Route::post([
     'lantern_save' => 'lanterns/lantern_save',
     'lantern_update' => 'lanterns/lantern_update',
+    'upload' => 'upload/one',
 ]);
+
+
