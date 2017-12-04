@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:26:"special/special_index.html";i:1512278304;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:26:"special/special_index.html";i:1512312493;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,16 +69,16 @@
                         <th class="text-center">名称</th>
                         <th class="text-center">操作</th>
                     </tr>
+                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <tr>
-                        <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                         <td> <?php echo $vo['special_id']; ?></td>
                         <td> <?php echo $vo['special_name']; ?></td>
                         <td>
                             <a class="btn btn-primary"  href="/special_load?special_id=<?php echo $vo['special_id']; ?>">修改</a>
                             <a class="btn btn-danger" href="#">删除</a>
                         </td>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
                     </tr>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
                 </table>
                 <?php echo $page; ?>
             </div>

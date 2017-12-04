@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512312163;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512398462;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +17,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/navbar-static-top.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
@@ -33,7 +31,7 @@
 </head>
 
 <body>
-<a href="/brand_add">添加品牌</a>
+
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -62,7 +60,10 @@
     <!-- Main component for a primary marketing message or call to action -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="table-responsive">
+            <div style="margin-bottom: 10px;">
+                <a class="btn btn-success" href="/brand_add">添加品牌</a>
+            </div>
+            <div class="table-responsive text-center">
                 <table class="table table-bordered text-center">
                     <tr>
                         <th class="text-center">序号</th>
