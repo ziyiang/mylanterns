@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>型号管理添加</title>
+</head>
+<body>
+
+<!--品牌下拉框-->
+<div>
+    品牌:
+    <select id="brand_id">
+        {volist name='brandList' id='vo'}
+        <option {if $vo.brand_id eq $lanternData.brand_id} selected = "selected"   {/if} value ="{$vo.brand_id}">{$vo.brand_name}</option>
+        {/volist}
+    </select>
+</div>
+
+<!--型号下拉框-->
+<div>
+    型号:
+    <select id="special_id">
+        {volist name='specialList' id='vo'}
+        <option {if $vo.brand_id eq $lanternData.brand_id} selected = "selected"   {/if} value ="{$vo.special_id}">{$vo.special_name}</option>
+        {/volist}
+    </select>
+
+</div>
+<input id="lantern_id" name="lantern_id" value="{$lanternData.lantern_id}" type="hidden">
+<div>
+    年份：<input id="year" name="year" value="{$lanternData.year}">
+</div>
+<div>
+    灯泡状态：<input id="lamp_status" name="lamp_status" value="{$lanternData.lamp_status}">
+</div>
+<div>
+    灯箱状态：<input id="box_status" name="box_status" value="{$lanternData.box_status}">
+</div>
+<div>
+    数量：<input id="num" name="num" value="{$lanternData.num}">
+</div>
+<div>
+    图片：aaa
+</div>
+<button id="save" type="button">Change Content</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $("#save").click(function(){
+            $.ajax({
+                url:"/lantern_save",
+                type:"post",
+                data:{
+                    "lantern_id":$("#lantern_id").val(),
+                    "brand_id":$("#brand_id").val(),
+                    "special_id":$("#special_id").val(),
+                    "lamp_status":$("#lamp_status").val(),
+                    "box_status":$("#box_status").val(),
+                    "year":$("#year").val(),
+                    "num":$("#num").val(),
+                },
+                dataType:"json",
+                success:function(html){
+                    console.log(html);
+                }
+            });
+        });
+    });
+</script>
+</html>

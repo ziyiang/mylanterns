@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:20:"brand/brand_add.html";i:1512398244;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:20:"brand/brand_add.html";i:1512399265;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -72,6 +72,4 @@
             });
         </script>
     </body>
-
-
 </html>
