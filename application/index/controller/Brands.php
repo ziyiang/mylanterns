@@ -19,9 +19,9 @@ class Brands extends Controller
 
 
         $brandModel = new Brand;
-        $list = $brandModel->paginate(3, false, [
+        $list = $brandModel->paginate(20, false, [
             'var_page' => 'page\Page',
-            'list_rows' => 2,
+            'list_rows' => 20,
         ]);
         $page = $list->render();
         $this->assign('list', $list);
