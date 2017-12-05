@@ -19,9 +19,9 @@ class Specials extends Controller
     public function special_list()
     {
         $specialModel = new Special;
-        $list = $specialModel->paginate(2, false, [
+        $list = $specialModel->paginate(20, false, [
             'var_page' => 'page\Page',
-            'list_rows' => 2,
+            'list_rows' => 20,
         ]);
 
 

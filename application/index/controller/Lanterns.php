@@ -20,9 +20,9 @@ class Lanterns extends Controller
     {
 
         $lanternModel = new lantern;
-        $list = $lanternModel->paginate(2, false, [
+        $list = $lanternModel->paginate(20, false, [
             'var_page' => 'page\Page',
-            'list_rows' => 2,
+            'list_rows' => 20,
         ]);
         $page = $list->render();
         $this->assign('list', $list);
@@ -59,7 +59,6 @@ class Lanterns extends Controller
      */
     public function lantern_save()
     {
-        $lantern_id = $this->request->param("lantern_id");
         $brand_id = $this->request->param("brand_id");
         $special_id = $this->request->param("special_id");
         $year = $this->request->param("year");
@@ -67,17 +66,17 @@ class Lanterns extends Controller
         $box_status = $this->request->param("box_status");
         $num = $this->request->param("num");
 
-        $bool = Db::table('lantern')->where(array("lantern_id"=>$lantern_id))->update(
-            array(
-                "brand_id" => $brand_id,
-                "special_id" => $special_id,
-                "year" => $year,
-                "lamp_status" => $lamp_status,
-                "box_status" => $box_status,
-                "num" => $num,
-                "create_time" => date("Y-m-d H:i:s"),
-            )
+
+        $data=array(
+            "brand_id" => $brand_id,
+            "special_id" => $special_id,
+            "year" => $year,
+            "lamp_status" => $lamp_status,
+            "box_status" => $box_status,
+            "num" => $num,
+            "create_time" => date("Y-m-d H:i:s"),
         );
+        $bool = Db::table('lantern')->insert($data);
         if ($bool) {
             echo json_encode(array("type" => true));
         } else {
