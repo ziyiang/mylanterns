@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:22:"brand/brand_index.html";i:1512399265;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:22:"brand/brand_index.html";i:1512402050;s:13:"./header.html";i:1512402050;}*/ ?>
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -33,26 +33,27 @@
     <body>
 
     <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="brand_list">品牌维护</a></li>
-                    <li><a href="special_list">型号维护</a></li>
-                    <li><a href="#number">数量维护</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
         </div>
-    </nav>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li <?php if($active_type == 'brand'): ?> class="active" <?php else: endif; ?> ><a href="brand_list" >品牌维护</a></li>
+                <li <?php if($active_type == 'special'): ?> class="active" <?php else: endif; ?> ><a href="special_list">型号维护</a></li>
+                <li <?php if($active_type == 'lantern'): ?> class="active" <?php else: endif; ?> ><a href="lantern_list">数量维护</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 
 
     <div class="container">
