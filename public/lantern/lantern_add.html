@@ -2,70 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
     <title>型号管理添加</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/navbar-static-top.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 
-<!--品牌下拉框-->
-<div>
-    品牌:
-    <select id="brand_id">
-        {volist name='brandList' id='vo'}
-        <option  value ="{$vo.brand_id}">{$vo.brand_name}</option>
-        {/volist}
-    </select>
-</div>
+    {include file="./header.html" /}
 
-<!--型号下拉框-->
-<div>
-    型号:
-    <select id="special_id">
-        {volist name='specialList' id='vo'}
-        <option  value ="{$vo.special_id}">{$vo.special_name}</option>
-        {/volist}
-    </select>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
 
-</div>
+                <div class="form">
 
-    <div>
-        年份：<input id="year" name="year" value="">
-    </div>
-    <div>
-        灯泡状态：<input id="lamp_status" name="lamp_status" value="">
-    </div>
-    <div>
-        灯箱状态：<input id="box_status" name="box_status" value="">
-    </div>
-    <div>
-        数量：<input id="num" name="num" value="">
-    </div>
-    <div>
-        图片：aaa
-    </div>
-<button id="save" type="button">Change Content</button>
-</body>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-<script>
+                    <!--品牌下拉框-->
+                    <div class="form-group">
+                        <label for="brand_id">品牌:</label>
+                        <select class="form-control" id="brand_id">
+                            {volist name='brandList' id='vo'}
+                            <option  value ="{$vo.brand_id}">{$vo.brand_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
 
-    $(document).ready(function(){
-        $("#save").click(function(){
-            $.ajax({
-                url:"/lantern_save",
-                type:"post",
-                data:{
-                    "brand_id":$("#brand_id").val(),
-                    "special_id":$("#special_id").val(),
-                    "lamp_status":$("#lamp_status").val(),
-                    "box_status":$("#box_status").val(),
-                    "year":$("#year").val(),
-                    "num":$("#num").val(),
-                },
-                dataType:"json",
-                success:function(html){
-                    console.log(html);
-                }
+                    <!--型号下拉框-->
+                    <div class="form-group">
+                        <label for="special_id"></label>型号:
+                        <select class="form-control" id="special_id">
+                            {volist name='specialList' id='vo'}
+                            <option  value ="{$vo.special_id}">{$vo.special_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year">年份：</label>
+                        <input class="form-control" id="year" name="year">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lamp_status">灯泡状态：</label>
+                        <input class="form-control" id="lamp_status" name="lamp_status">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="box_status">灯箱状态：</label>
+                        <input class="form-control" id="box_status" name="box_status">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num">数量：</label>
+                        <input class="form-control" id="num" name="num">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pic">图片：</label>
+                        <input class="form-control" type="file" id="pic" name="pic">
+                    </div>
+
+                    <button id="save" type="button" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#save").click(function(){
+                $.ajax({
+                    url:"/lantern_save",
+                    type:"post",
+                    data:{
+                        "brand_id":$("#brand_id").val(),
+                        "special_id":$("#special_id").val(),
+                        "lamp_status":$("#lamp_status").val(),
+                        "box_status":$("#box_status").val(),
+                        "year":$("#year").val(),
+                        "num":$("#num").val(),
+                    },
+                    dataType:"json",
+                    success:function(html){
+                        console.log(html);
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+</body>
+
 </html>
