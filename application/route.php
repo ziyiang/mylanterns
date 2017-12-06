@@ -27,6 +27,7 @@ use think\Route;
 
 Route::post([
     'to_login' => 'users/to_login',
+    'logout' => 'users/logout',
 ]);
 
 
@@ -39,6 +40,7 @@ Route::get([
 Route::post([
     'brand_save' => 'brands/brand_save',
     'brand_update' => 'brands/brand_update',
+    'brand_delete' => 'brands/brand_delete',
 ]);
 
 
@@ -50,6 +52,7 @@ Route::get([
     'special_list' => 'specials/special_list',
     'special_add' => 'specials/special_add',
     'special_load' => 'specials/special_load',
+    'special_delete' => 'specials/special_delete',
 ]);
 Route::post([
     'special_save' => 'specials/special_save',

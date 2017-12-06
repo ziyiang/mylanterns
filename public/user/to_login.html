@@ -96,7 +96,11 @@
                         },
                         dataType:"json",
                         success:function(html){
-                            console.log(html);
+                            if(html.type=='true'){
+                                window.location.replace("/brand_list");
+                            }else{
+                                alert(html.msg);
+                            }
                         }
                     });
                 });

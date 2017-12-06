@@ -46,9 +46,29 @@ class Users extends Controller
 
         $userinfo_data= Db::table('userinfo')->where(array("user_name" => $user_name,"password"=>$password))->find();
         if(!empty($userinfo_data)){
-            echo json_encode(array('msg'=>"登录成功"));
+            session("user_id",$userinfo_data["user_id"]);
+            session("user_name",$userinfo_data["user_name"]);
+            echo json_encode(array('type'=>'true','msg'=>"登录成功"));
         }else{
-            echo json_encode(array('msg'=>"用户不存在"));
+            echo json_encode(array('type'=>'false','msg'=>"用户不存在"));
+        }
+    }
+
+
+    /**
+     * @Description:退出
+     * @author:lizx
+     */
+    public function logout()
+    {
+        $user_id=session("user_id");
+        $userinfo_data= Db::table('userinfo')->where(array("user_id" =>$user_id))->find();
+        if(!empty($userinfo_data)){
+            session_unset("user_id",$userinfo_data["user_id"]);
+            session_unset("user_name",$userinfo_data["user_name"]);
+            echo json_encode(array('type'=>'true','msg'=>"登录成功"));
+        }else{
+            echo json_encode(array('type'=>'false','msg'=>"用户不存在"));
         }
     }
 }

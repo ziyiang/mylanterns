@@ -55,7 +55,7 @@
                             <td> {$brand.brand_name}</td>
                             <td>
                                 <a class="btn btn-primary"  href="/brand_load?brand_id={$brand.brand_id}">修改</a>
-                                <a class="btn btn-danger" href="#">删除</a>
+                                <a class="btn btn-danger" onclick="delete_brand({$brand.brand_id})">删除</a>
                             </td>
                         </tr>
                         {/volist}
@@ -76,6 +76,25 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script>
+            function delete_brand(brand_id) {
+                $.ajax({
+                    url:"/brand_delete",
+                    type:"post",
+                    data:{"brand_id":brand_id},
+                    dataType:"json",
+                    success:function(html){
+                        if(html.type=="true"){
+                            alert(html.msg);
+                            window.location.reload();
+                        }else{
+                            alert(html.msg);
+                        }
+                    }
+                });
+            }
+    </script>
     </body>
 </html>
 
