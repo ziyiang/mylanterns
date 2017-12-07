@@ -115,9 +115,9 @@ class Brands extends Controller
         } else {
             $bool = Db::table('brand')->where(array("brand_id" => $brand_id))->delete();
             if($bool){
-                echo json_encode(array("type" => "true","msg"=>"删除成功"));
+                echo json_encode(array("type" => true,"msg"=>"删除成功"));
             }else{
-                echo json_encode(array("type" => "false","msg"=>"删除失败"));
+                echo json_encode(array("type" => false,"msg"=>"删除失败"));
             }
 
         }

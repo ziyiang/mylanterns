@@ -149,9 +149,9 @@ class Lanterns extends Controller
         $lantern_id = $_REQUEST["lantern_id"];
         $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->delete();
         if($bool){
-            echo json_encode(array("type" => "true","msg"=>"删除成功"));
+            echo json_encode(array("type" => true,"msg"=>"删除成功"));
         }else{
-            echo json_encode(array("type" => "false","msg"=>"删除失败"));
+            echo json_encode(array("type" => false,"msg"=>"删除失败"));
         }
 
     }
