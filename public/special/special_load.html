@@ -5,6 +5,7 @@
     <title>品牌管理修改</title>
 </head>
 <body>
+{include file="./header.html" /}
 <!--下拉框-->
 <select id="brand_id">
     {volist name='brandList' id='vo'}
@@ -29,7 +30,12 @@
                 data:{"special_id":$("#special_id").val(),"brand_id":$("#brand_id").val(),"special_name":$("#special_name").val()},
                 dataType:"json",
                 success:function(html){
-                    console.log(html);
+                    if(html.type=="true"){
+                        alert(html.msg);
+                        window.location.href="/special_list";
+                    }else{
+                        alert(html.msg);
+                    }
                 }
             });
         });

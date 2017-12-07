@@ -5,7 +5,7 @@
     <title>型号管理添加</title>
 </head>
 <body>
-
+{include file="./header.html" /}
 <!--品牌下拉框-->
 <div>
     品牌:
@@ -64,7 +64,12 @@
                 },
                 dataType:"json",
                 success:function(html){
-                    console.log(html);
+                    if(html.type=="true"){
+                        alert(html.msg);
+                        window.location.href="/lantern_list";
+                    }else{
+                        alert(html.msg);
+                    }
                 }
             });
         });

@@ -84,9 +84,9 @@ class Lanterns extends Controller
         );
         $bool = Db::table('lantern')->insert($data);
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"添加成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"失败成功"));
         }
 
     }
@@ -130,9 +130,28 @@ class Lanterns extends Controller
         $brand_id = $_REQUEST["brand_id"];
         $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update(array("brand_id" => $brand_id, "lantern_name" => $lantern_name));
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"修改成功"));
+        }
+
+    }
+
+
+
+    /**
+     * @Description:删除
+     * @author:lizx
+     * @date:2017年12月2日
+     */
+    public function lantern_delete()
+    {
+        $lantern_id = $_REQUEST["lantern_id"];
+        $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->delete();
+        if($bool){
+            echo json_encode(array("type" => "true","msg"=>"删除成功"));
+        }else{
+            echo json_encode(array("type" => "false","msg"=>"删除失败"));
         }
 
     }

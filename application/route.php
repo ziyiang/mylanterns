@@ -52,11 +52,11 @@ Route::get([
     'special_list' => 'specials/special_list',
     'special_add' => 'specials/special_add',
     'special_load' => 'specials/special_load',
-    'special_delete' => 'specials/special_delete',
 ]);
 Route::post([
     'special_save' => 'specials/special_save',
     'special_update' => 'specials/special_update',
+    'special_delete' => 'specials/special_delete',
 ]);
 
 
@@ -72,6 +72,7 @@ Route::post([
     'lantern_save' => 'lanterns/lantern_save',
     'lantern_update' => 'lanterns/lantern_update',
     'upload' => 'upload/one',
+    'lantern_delete' => 'lanterns/lantern_delete',
 ]);
 
 

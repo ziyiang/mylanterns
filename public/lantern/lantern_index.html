@@ -64,7 +64,7 @@
                         <td> {$vo.num}</td>
                         <td>
                             <a class="btn btn-primary"  href="/lantern_load?lantern_id={$vo.lantern_id}">修改</a>
-                            <a class="btn btn-danger" href="#">删除</a>
+                            <a class="btn btn-danger" onclick="delete_lantern({$vo.lantern_id})">删除</a>
                         </td>
                     </tr>
                     {/volist}
@@ -86,5 +86,23 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
 <script src="/static/js/header.js"></script>
+<script>
+    function delete_lantern(lantern_id) {
+        $.ajax({
+            url:"/lantern_delete",
+            type:"post",
+            data:{"lantern_id":lantern_id},
+            dataType:"json",
+            success:function(html){
+                if(html.type=="true"){
+                    alert(html.msg);
+                    window.location.reload();
+                }else{
+                    alert(html.msg);
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

@@ -68,9 +68,9 @@ class Specials extends Controller
 
         $bool = Db::table('special')->insert(array("brand_id" => $grand_id, "special_name" => $special_name, "create_time" => date("Y-m-d H:i:s")));
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"添加成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"失败成功"));
         }
     }
 
@@ -107,9 +107,9 @@ class Specials extends Controller
         $brand_id = $_REQUEST["brand_id"];
         $bool = Db::table('special')->where(array("special_id" => $special_id))->update(array("brand_id" => $brand_id, "special_name" => $special_name));
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"修改成功"));
         }
     }
 

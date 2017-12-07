@@ -59,9 +59,9 @@ class Brands extends Controller
         $brand_name = $_REQUEST["brand_name"];
         $bool = Db::table('brand')->insert(array("brand_name" => $brand_name, "create_time" => date("Y-m-d H:i:s")));
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"添加成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"失败成功"));
         }
 
     }
@@ -93,9 +93,9 @@ class Brands extends Controller
         $brand_name = $_REQUEST["brand_name"];
         $bool = Db::table('brand')->where(array("brand_id" => $brand_id))->update(array("brand_name" => $brand_name));
         if ($bool) {
-            echo json_encode(array("type" => true));
+            echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
-            echo json_encode(array("type" => false));
+            echo json_encode(array("type" => false,"msg"=>"修改成功"));
         }
 
     }

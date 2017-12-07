@@ -21,7 +21,12 @@
                 data:{"brand_id":$("#brand_id").val(),"brand_name":$("#brand_name").val()},
                 dataType:"json",
                 success:function(html){
-                    console.log(html);
+                    if(html.type=="true"){
+                        alert(html.msg);
+                        window.location.href="/brand_list";
+                    }else{
+                        alert(html.msg);
+                    }
                 }
             });
         });

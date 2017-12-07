@@ -109,7 +109,12 @@
                     },
                     dataType:"json",
                     success:function(html){
-                        console.log(html);
+                        if(html.type=="true"){
+                            alert(html.msg);
+                            window.location.href="/lantern_list";
+                        }else{
+                            alert(html.msg);
+                        }
                     }
                 });
             });

@@ -56,7 +56,7 @@
                         <td> {$vo.special_name}</td>
                         <td>
                             <a class="btn btn-primary" href="/special_load?special_id={$vo.special_id}">修改</a>
-                            <a class="btn btn-danger" onclick="delete_special({$vo.special_id})">>删除</a>
+                            <a class="btn btn-danger" onclick="delete_special({$vo.special_id})">删除</a>
                         </td>
                     </tr>
                     {/volist}
@@ -83,7 +83,7 @@
         $.ajax({
             url:"/special_delete",
             type:"post",
-            data:{"special_id":$("#special_id").val()},
+            data:{"special_id":special_id},
             dataType:"json",
             success:function(html){
                 if(html.type=="true"){
