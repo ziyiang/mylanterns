@@ -151,6 +151,11 @@
         uploader.init();
         $(document).ready(function(){
             $("#save").click(function(){
+                var img_arr_elem = $("ul_pics img") || [],img_arr_addr=[];
+                for(var i = 0 ; i < img_arr.length ; i++){
+                    img_arr_addr.push(img_arr_elem.eq(i).attr("src"))
+                }
+                console.log(img_arr_addr);
                 $.ajax({
                     url:"/lantern_save",
                     type:"post",
