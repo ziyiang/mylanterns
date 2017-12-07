@@ -13,31 +13,39 @@ use think\Db;
 
 class Uploads extends Controller
 {
-    // 用户密码修改
-    public function one()
-    {
-        dump(232);exit;
-        $file = $this->request->file('upfile');
-        // 移动到框架应用根目录/public/upload/ 目录下
-        // 移动到框架应用根目录/public/uploads/ 目录下
-        if($file){
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            if($info){
-                // 成功上传后 获取上传信息
-                // 输出 jpg
-                echo $info->getExtension();
-                // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
-                echo $info->getSaveName();
-                // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                echo $info->getFilename();
-            }else{
-                // 上传失败获取错误信息
-                echo $file->getError();
+
+    public function upload(){
+        $typeArr = array("jpg", "png", "gif");//允许上传文件格式
+        $path = "uploads/";//上传路径
+
+        if (isset($_POST)) {
+            $name = $_FILES['file']['name'];
+            $size = $_FILES['file']['size'];
+            $name_tmp = $_FILES['file']['tmp_name'];
+            if (empty($name)) {
+                echo json_encode(array("error"=>"您还未选择图片"));
+                exit;
+            }
+            $type = strtolower(substr(strrchr($name, '.'), 1)); //获取文件类型
+
+            if (!in_array($type, $typeArr)) {
+                echo json_encode(array("error"=>"清上传jpg,png或gif类型的图片！"));
+                exit;
+            }
+            if ($size > (500 * 1024)) {
+                echo json_encode(array("error"=>"图片大小已超过500KB！"));
+                exit;
+            }
+
+            $pic_name = time() . rand(10000, 99999) . "." . $type;//图片名称
+            $pic_url = $path . $pic_name;//上传后图片路径+名称
+            if (move_uploaded_file($name_tmp, $pic_url)) { //临时文件转移到目标文件夹
+                echo json_encode(array("error"=>"0","pic"=>$pic_url,"name"=>$pic_name));
+            } else {
+                echo json_encode(array("error"=>"上传有误，清检查服务器配置！"));
             }
         }
-
     }
-
 
 
     public function up(){
