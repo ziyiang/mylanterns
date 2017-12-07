@@ -136,8 +136,7 @@ class Lanterns extends Controller
         $data['box_status'] = $this->request->param("box_status");
         $data['num'] = $this->request->param("num");
         $data['pics'] = $this->request->param("num");
-        $data
-        $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update();
+        $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update($data);
         if ($bool) {
             echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
