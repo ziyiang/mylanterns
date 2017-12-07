@@ -16,7 +16,7 @@ class Uploads extends Controller
 
     public function upload(){
         $typeArr = array("jpg", "png", "gif");//允许上传文件格式
-        $path = "uploads/";//上传路径
+        $path = "upload/";//上传路径
 
         if (isset($_POST)) {
             $name = $_FILES['file']['name'];
