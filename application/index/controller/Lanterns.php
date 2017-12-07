@@ -71,6 +71,7 @@ class Lanterns extends Controller
         $lamp_status = $this->request->param("lamp_status");
         $box_status = $this->request->param("box_status");
         $num = $this->request->param("num");
+        $pics = $this->request->param("num");
 
 
         $data=array(
@@ -80,13 +81,14 @@ class Lanterns extends Controller
             "lamp_status" => $lamp_status,
             "box_status" => $box_status,
             "num" => $num,
+            "pics" => $pics,
             "create_time" => date("Y-m-d H:i:s"),
         );
         $bool = Db::table('lantern')->insert($data);
         if ($bool) {
             echo json_encode(array("type" => true,"msg"=>"添加成功"));
         } else {
-            echo json_encode(array("type" => false,"msg"=>"失败成功"));
+            echo json_encode(array("type" => false,"msg"=>"添加失败"));
         }
 
     }
@@ -125,10 +127,17 @@ class Lanterns extends Controller
      */
     public function lantern_update()
     {
-        $lantern_id = $_REQUEST["lantern_id"];
-        $lantern_name = $_REQUEST["lantern_name"];
-        $brand_id = $_REQUEST["brand_id"];
-        $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update(array("brand_id" => $brand_id, "lantern_name" => $lantern_name));
+        $lantern_id = $this->request->param("lantern_id");
+
+        $data['brand_id'] = $this->request->param("brand_id");
+        $data['special_id'] = $this->request->param("special_id");
+        $data['year'] = $this->request->param("year");
+        $data['lamp_status'] = $this->request->param("lamp_status");
+        $data['box_status'] = $this->request->param("box_status");
+        $data['num'] = $this->request->param("num");
+        $data['pics'] = $this->request->param("num");
+        $data
+        $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update();
         if ($bool) {
             echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
