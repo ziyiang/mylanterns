@@ -16,8 +16,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/navbar-static-top.css" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
@@ -80,20 +79,23 @@
 <script src="/static/js/header.js"></script>
 <script>
     function delete_special(special_id) {
-        $.ajax({
-            url:"/special_delete",
-            type:"post",
-            data:{"special_id":special_id},
-            dataType:"json",
-            success:function(html){
-                if(html.type=="true"){
-                    alert(html.msg);
-                    window.location.reload();
-                }else{
-                    alert(html.msg);
+        if(confirm("确认删除吗？")){
+            $.ajax({
+                url:"/special_delete",
+                type:"post",
+                data:{"special_id":special_id},
+                dataType:"json",
+                success:function(html){
+                    if(html.type==true){
+                        alert(html.msg);
+                        window.location.reload();
+                    }else{
+                        alert(html.msg);
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
 </script>
 </body>

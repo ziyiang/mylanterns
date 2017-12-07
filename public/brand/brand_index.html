@@ -78,14 +78,15 @@
     <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
     <script src="/static/js/header.js"></script>
     <script>
-            function delete_brand(brand_id) {
+        function delete_brand(brand_id) {
+            if(confirm("确认删除吗？")){
                 $.ajax({
                     url:"/brand_delete",
                     type:"post",
                     data:{"brand_id":brand_id},
                     dataType:"json",
                     success:function(html){
-                        if(html.type=="true"){
+                        if(html.type==true){
                             alert(html.msg);
                             window.location.reload();
                         }else{
@@ -94,6 +95,8 @@
                     }
                 });
             }
+
+        }
     </script>
     </body>
 </html>

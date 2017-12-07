@@ -68,7 +68,8 @@
                         data:{"brand_name":$("#brand_name").val()},
                         dataType:"json",
                         success:function(html){
-                            if(html.type=="true"){
+
+                            if(html.type==true){
                                 alert(html.msg);
                                 window.location.href="/brand_list";
                             }else{
