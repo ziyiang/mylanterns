@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>型号管理修改</title>
+    <title>型号管理添加</title>
 </head>
 <body>
-
+{include file="./header.html" /}
 <!--品牌下拉框-->
 <div>
     品牌:
@@ -40,34 +40,13 @@
     数量：<input id="num" name="num" value="{$lanternData.num}">
 </div>
 <div>
-    图片
+    图片：aaa
 </div>
 <button id="save" type="button">Change Content</button>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <script src="/static/js/header.js"></script>
 <script>
-    $("#upimg").click(function(event) {
-        //formdata储存异步上传数据
-        var formData = new FormData($('form')[0]);
-        formData.append('file',$(':file')[0].files[0]);
-        //坑点: 无论怎么传数据,console.log(formData)都会显示为空,但其实值是存在的,f12查看Net tab可以看到数据被上传了
-        $.ajax({
-            url:'formtest.php',
-            type: 'POST',
-            data: formData,
-            //这两个设置项必填
-            contentType: false,
-            processData: false,
-            success:function(data){
-                console.log(data)
-                var srcPath = data;
-                console.log();
-                //注意这里的路径要根据自己的储存文件的路径设置
-                $('.picDis img').attr('src', '..'+srcPath);
-            }
-        })
-    });
 
     $(document).ready(function(){
         $("#save").click(function(){
@@ -85,7 +64,12 @@
                 },
                 dataType:"json",
                 success:function(html){
-                    console.log(html);
+                    if(html.type=="true"){
+                        alert(html.msg);
+                        window.location.href="/lantern_list";
+                    }else{
+                        alert(html.msg);
+                    }
                 }
             });
         });
