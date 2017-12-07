@@ -166,12 +166,13 @@
                         "box_status":$("#box_status").val(),
                         "year":$("#year").val(),
                         "num":$("#num").val(),
+                        "pics": JSON.stringify(img_arr_addr) ,
                     },
                     dataType:"json",
                     success:function(html){
                         if(html.type==true){
                             alert(html.msg);
-                            //window.location.href="/lantern_list";
+                            window.location.href="/lantern_list";
                         }else{
                             alert(html.msg);
                         }

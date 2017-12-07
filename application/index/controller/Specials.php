@@ -25,7 +25,7 @@ class Specials extends Controller
     public function special_list()
     {
         $specialModel = new Special;
-        $list = $specialModel->paginate(20, false, [
+        $list = $specialModel->join("brand","brand.brand_id=special.brand_id")->paginate(20, false, [
             'var_page' => 'page\Page',
             'list_rows' => 20,
         ]);

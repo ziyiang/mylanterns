@@ -71,7 +71,7 @@ class Lanterns extends Controller
         $lamp_status = $this->request->param("lamp_status");
         $box_status = $this->request->param("box_status");
         $num = $this->request->param("num");
-        $pics = $this->request->param("num");
+        $pics = $this->request->param("pics");
 
 
         $data=array(
@@ -104,6 +104,10 @@ class Lanterns extends Controller
         $lanternData = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->find();
         $this->assign('lanternData', $lanternData);
 
+        $lanternPics=json_decode($lanternData["pics"],true);
+        $this->assign('lanternPics', $lanternPics);
+
+
         $brandModel = new Brand();
         $brandList = $brandModel->select();
         $this->assign('brandList', $brandList);
@@ -135,12 +139,12 @@ class Lanterns extends Controller
         $data['lamp_status'] = $this->request->param("lamp_status");
         $data['box_status'] = $this->request->param("box_status");
         $data['num'] = $this->request->param("num");
-        $data['pics'] = $this->request->param("num");
+        $data['pics'] = $this->request->param("pics");
         $bool = Db::table('lantern')->where(array("lantern_id" => $lantern_id))->update($data);
         if ($bool) {
             echo json_encode(array("type" => true,"msg"=>"修改成功"));
         } else {
-            echo json_encode(array("type" => false,"msg"=>"修改成功"));
+            echo json_encode(array("type" => false,"msg"=>"修改失败"));
         }
 
     }

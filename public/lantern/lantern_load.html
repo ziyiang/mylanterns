@@ -74,7 +74,7 @@
                     <input class="form-control" id="box_status" name="box_status">
                 </div>
 
-                <div class="form-group">  
+                <div class="form-group">
                     <label for="num">数量：</label>
                     <input class="form-control" id="num" name="num" value="{$lanternData.num}">
                 </div>
@@ -83,7 +83,14 @@
                     <label for="pic">图片：</label>
 
                     <a class="btn" id="btn">上传图片</a> 最大500KB，支持jpg，gif，png格式。
-                    <ul id="ul_pics" class="ul_pics clearfix"></ul>
+                    <ul id="ul_pics" class="ul_pics clearfix">
+                        {volist name='lanternPics' id='vo'}
+                        <li id="o_1c0oqqsu21csl1gpq1tm51anvk487">
+                            <div class="img"><img src="{$vo}"></div>
+                            <p>151266193918077.png</p>
+                        </li>
+                        {/volist}
+                    </ul>
                 </div>
 
                 <button id="save" type="button" class="btn btn-success">保存</button>
@@ -151,8 +158,13 @@
     uploader.init();
     $(document).ready(function () {
         $("#save").click(function () {
+            var img_arr_elem = $("#ul_pics img") || [],img_arr_addr=[];
+            for(var i = 0 ; i < img_arr_elem.length ; i++){
+                img_arr_addr.push(img_arr_elem.eq(i).attr("src"))
+            }
+            console.log(img_arr_addr);
             $.ajax({
-                url: "/lantern_save",
+                url: "/lantern_update",
                 type: "post",
                 data: {
                     "lantern_id": $("#lantern_id").val(),
@@ -162,10 +174,16 @@
                     "box_status": $("#box_status").val(),
                     "year": $("#year").val(),
                     "num": $("#num").val(),
+                    "pics": JSON.stringify(img_arr_addr) ,
                 },
                 dataType: "json",
                 success: function (html) {
-                    console.log(html);
+                    if(html.type==true){
+                        alert(html.msg);
+                        window.location.href="/lantern_list";
+                    }else{
+                        alert(html.msg);
+                    }
                 }
             });
         });

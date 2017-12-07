@@ -45,13 +45,15 @@
                 <table class="table table-bordered text-center">
                     <tr>
                         <th class="text-center">序号</th>
-                        <th class="text-center">名称</th>
+                        <th class="text-center">品牌</th>
+                        <th class="text-center">型号</th>
                         <th class="text-center">操作</th>
                     </tr>
                     {volist name='list' id='vo'}
                     <tr>
 
                         <td> {$vo.special_id}</td>
+                        <td> {$vo.brand_name}</td>
                         <td> {$vo.special_name}</td>
                         <td>
                             <a class="btn btn-primary" href="/special_load?special_id={$vo.special_id}">修改</a>
