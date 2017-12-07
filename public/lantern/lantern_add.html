@@ -151,8 +151,8 @@
         uploader.init();
         $(document).ready(function(){
             $("#save").click(function(){
-                var img_arr_elem = $("ul_pics img") || [],img_arr_addr=[];
-                for(var i = 0 ; i < img_arr.length ; i++){
+                var img_arr_elem = $("#ul_pics img") || [],img_arr_addr=[];
+                for(var i = 0 ; i < img_arr_elem.length ; i++){
                     img_arr_addr.push(img_arr_elem.eq(i).attr("src"))
                 }
                 console.log(img_arr_addr);
@@ -171,7 +171,7 @@
                     success:function(html){
                         if(html.type==true){
                             alert(html.msg);
-                            window.location.href="/lantern_list";
+                            //window.location.href="/lantern_list";
                         }else{
                             alert(html.msg);
                         }
