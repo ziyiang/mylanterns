@@ -14,8 +14,8 @@ class Brands extends Controller
         $this->assign('active_type', "brand");
 
 
-        if(empty(session("user_id"))){
-            $url="/index";
+        if(empty(session("admin_user_id"))){
+            $url="/myadmin";
             Header("Location: $url");
             exit;
         }

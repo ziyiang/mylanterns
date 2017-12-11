@@ -88,7 +88,7 @@
             $(document).ready(function(){
                 $("#save").click(function(){
                     $.ajax({
-                        url:"/to_login",
+                        url:"/admin_to_login",
                         type:"post",
                         data:{
                             "user_name":$("#user_name").val(),
@@ -97,7 +97,7 @@
                         dataType:"json",
                         success:function(html){
                             if(html.type=='true'){
-                                window.location.replace("/common_lantern_list");
+                                window.location.replace("/brand_list");
                             }else{
                                 alert(html.msg);
                             }

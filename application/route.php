@@ -22,6 +22,13 @@
 
 
 use think\Route;
+Route::get([
+    'myadmin' => 'Index/admins/login',
+]);
+Route::post([
+    'admin_to_login' => 'Index/admins/to_login',
+]);
+
 
 
 
@@ -75,3 +82,10 @@ Route::post([
 ]);
 
 
+
+
+//前台
+Route::get([
+    'common_lantern_list' => 'users/common_lantern_list',
+    'common_lantern_view' => 'users/common_lantern_view',
+]);
